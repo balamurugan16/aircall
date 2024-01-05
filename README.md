@@ -1,11 +1,20 @@
 # Aircall
 
+|                       |                      |
+|-----------------------|----------------------|
+| Assessment name       | Front End Assessment |
+| Name of the candidate | Balamurugan D        |
+
 ### Tech Stack used:
 1. React
 2. TypeScript
 3. Vite
 4. Redux Toolkit + RTK Query
 5. MUI
+
+### Points to convey to the Judge
+1. The API provided for the assessment responded with insufficient data which I had to filter out.
+2. From the given boilerplate, I replaced Typescript for JavaScript and Vite for Webpack. This is to improve my developer productivity.
 
 ### Noteworthy feature implementations
 
