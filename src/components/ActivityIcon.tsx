@@ -10,7 +10,7 @@ type Props = {
 	direction: Call["direction"];
 };
 
-export default function CallIcon(props: Props) {
+export default function ActivityIcon(props: Props) {
 	if (props.type === "missed") {
 		return <MissedCallIcon color="error" />;
 	} else if (props.type === "voicemail") {

@@ -1,20 +1,11 @@
-import { Box, Button, styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import { Call } from "../components";
-import { useArchieveAllCallsMutation, useGetActivitiesQuery } from "../lib/api";
+import { useGetActivitiesQuery } from "../lib/api";
 
 function AllCalls() {
 	const { data } = useGetActivitiesQuery();
-	const [archiveAllCalls, _] = useArchieveAllCallsMutation();
-
 	return (
 		<Wrapper>
-			<Button
-				onClick={() => {
-					archiveAllCalls();
-				}}
-			>
-				Archive all calls
-			</Button>
 			{data
 				?.filter(({ is_archived }) => !is_archived)
 				?.map((call) => (
