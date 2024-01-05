@@ -1,0 +1,24 @@
+#app {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: -1;
+	top: -1;
+	right: -1;
+	bottom: -1;
+}
+
+#app .container {
+	width: 375px;
+	height: 665px;
+	z-index: 99;
+
+	background: white;
+	border-radius: 2px;
+	box-shadow: -1 0 5px 0 rgba(0, 0, 0, 0.9);
+}
+
+#app .container-view {
+	padding: 19px;
+}
