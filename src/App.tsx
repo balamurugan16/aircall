@@ -1,28 +1,44 @@
-import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Header } from "./components";
-import { store } from "./lib/store";
+import { useSelector } from "./store";
 import { NavBar } from "./components";
 import ArchievedCalls from "./pages/ArchievedCalls";
 import AllCalls from "./pages/AllCalls";
-import { CssBaseline } from "@mui/material";
+import {
+	Box,
+	createTheme,
+	CssBaseline,
+	styled,
+	ThemeProvider,
+} from "@mui/material";
 
 function App() {
+	const { mode } = useSelector((state) => state.theme);
+	const theme = createTheme({
+		palette: {
+			mode,
+		},
+	});
+
 	return (
-		<Provider store={store}>
-			<CssBaseline />
-			<div className="container">
-				<BrowserRouter>
-					<Header />
+		<ThemeProvider theme={theme}>
+			<BrowserRouter>
+				<CssBaseline />
+				<Header />
+				<Wrapper>
 					<Routes>
 						<Route path="/" element={<AllCalls />} />
 						<Route path="/archieve" element={<ArchievedCalls />} />
 					</Routes>
-					<NavBar />
-				</BrowserRouter>
-			</div>
-		</Provider>
+				</Wrapper>
+				<NavBar />
+			</BrowserRouter>
+		</ThemeProvider>
 	);
 }
+
+const Wrapper = styled(Box)`
+	margin-top: 3rem;
+`;
 
 export default App;
