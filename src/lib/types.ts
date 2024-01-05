@@ -8,6 +8,7 @@ export type Call = {
 	duration: number;
 	is_archived: boolean;
 	call_type: "missed" | "answered" | "voicemail";
+	dateObject: Date;
 };
 
 export type ArchiveRequest = {

@@ -1,16 +1,24 @@
-import { Box, styled } from "@mui/material";
+import { Box, Typography, styled } from "@mui/material";
 import { Call } from "../components";
-import { useGetActivitiesQuery } from "../lib/api";
+import useActivies from "../hooks/useActivities";
 
 function AllCalls() {
-	const { data } = useGetActivitiesQuery();
+	const data = useActivies("Unarchived");
+
 	return (
 		<Wrapper>
-			{data
-				?.filter(({ is_archived }) => !is_archived)
-				?.map((call) => (
-					<Call key={call.id} {...call} />
-				))}
+			{Object.entries(data).map(([date, calls]) => {
+				return (
+					<div className="call-group">
+						<Typography className="day" variant="body2">
+							{date}
+						</Typography>
+						{calls.map((call) => (
+							<Call {...call} />
+						))}
+					</div>
+				);
+			})}
 		</Wrapper>
 	);
 }
@@ -19,7 +27,13 @@ const Wrapper = styled(Box)`
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 1.5rem;
+
+	.call-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
 `;
 
 export default AllCalls;

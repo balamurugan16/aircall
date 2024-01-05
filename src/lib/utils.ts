@@ -9,6 +9,52 @@ export function formatDateTime(dateString: string): string {
 	return formatter.format(date);
 }
 
+export function formatRelativeDate(targetDate: Date) {
+	const currentDate = new Date();
+
+	// Check if the date is today
+	if (
+		targetDate.getDate() === currentDate.getDate() &&
+		targetDate.getMonth() === currentDate.getMonth() &&
+		targetDate.getFullYear() === currentDate.getFullYear()
+	) {
+		return "Today";
+	}
+
+	// Check if the date is yesterday
+	const yesterday = new Date(currentDate);
+	yesterday.setDate(currentDate.getDate() - 1);
+
+	if (
+		targetDate.getDate() === yesterday.getDate() &&
+		targetDate.getMonth() === yesterday.getMonth() &&
+		targetDate.getFullYear() === yesterday.getFullYear()
+	) {
+		return "Yesterday";
+	}
+
+	// Check if the date is tomorrow
+	const tomorrow = new Date(currentDate);
+	tomorrow.setDate(currentDate.getDate() + 1);
+
+	if (
+		targetDate.getDate() === tomorrow.getDate() &&
+		targetDate.getMonth() === tomorrow.getMonth() &&
+		targetDate.getFullYear() === tomorrow.getFullYear()
+	) {
+		return "Tomorrow";
+	}
+
+	// For other dates, return the formatted date (e.g., 7th March 2022)
+	const formatter = new Intl.DateTimeFormat("en-US", {
+		day: "numeric",
+		month: "long",
+		year: "numeric",
+	});
+
+	return formatter.format(targetDate);
+}
+
 export function formatDuration(call: Call): string {
 	if (call.call_type === "missed") {
 		return "Missed Call";
