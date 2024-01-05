@@ -39,7 +39,7 @@ function ArchievedCalls() {
 							{date}
 						</Typography>
 						{calls.map((call) => (
-							<Call {...call} />
+							<Call {...call} type="Archived" />
 						))}
 					</div>
 				);

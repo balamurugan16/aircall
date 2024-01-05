@@ -16,14 +16,27 @@ export const api = createApi({
 		getActivity: builder.query<Call, Call["id"]>({
 			query: (id) => `activities/${id}`,
 		}),
-		archieveCall: builder.mutation<string, ArchiveRequest & Pick<Call, "id">>({
-			query: ({ id, ...body }) => ({
+		archieveCall: builder.mutation<string, Call["id"]>({
+			query: (id) => ({
 				url: `activities/${id}`,
 				method: "PATCH",
-				body,
+				body: {
+					is_archived: false,
+				} as ArchiveRequest,
 			}),
 			invalidatesTags: ["Activity"],
 		}),
+		unArchieveCall: builder.mutation<string, Call["id"]>({
+			query: (id) => ({
+				url: `activities/${id}`,
+				method: "PATCH",
+				body: {
+					is_archived: false,
+				} as ArchiveRequest,
+			}),
+			invalidatesTags: ["Activity"],
+		}),
+
 		archieveAllCalls: builder.mutation<string, void>({
 			query: () => ({
 				url: `reset`,
@@ -38,5 +51,6 @@ export const {
 	useGetActivitiesQuery,
 	useGetActivityQuery,
 	useArchieveCallMutation,
+	useUnArchieveCallMutation,
 	useArchieveAllCallsMutation,
 } = api;

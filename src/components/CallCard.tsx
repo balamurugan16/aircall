@@ -10,25 +10,31 @@ import {
 import { Call } from "../lib/types";
 import ActivityIcon from "./ActivityIcon";
 import ArchiveIcon from "@mui/icons-material/Archive";
+import UnarchiveIcon from "@mui/icons-material/Unarchive";
 import PhoneIcon from "@mui/icons-material/Call";
 import VideoCallIcon from "@mui/icons-material/VideoCall";
 import MessageIcon from "@mui/icons-material/Message";
-import { useArchieveCallMutation } from "../lib/api";
+import { useArchieveCallMutation, useUnArchieveCallMutation } from "../lib/api";
 import { formatDateTime, formatDuration } from "../lib/utils";
 
-const CallCard = (call: Call) => {
+type Props = {
+	type: "Archived" | "Unarchived";
+} & Call;
+
+const CallCard = (props: Props) => {
 	const [archiveCall] = useArchieveCallMutation();
+	const [unArchiveCall] = useUnArchieveCallMutation();
 
 	return (
 		<StyledAccordion>
 			<AccordionSummary aria-controls="panel1a-content" id="panel1a-header">
 				<Summary>
-					<ActivityIcon type={call.call_type} direction={call.direction} />
+					<ActivityIcon type={props.call_type} direction={props.direction} />
 					<div>
-						<Typography>{call.from}</Typography>
+						<Typography>{props.from}</Typography>
 					</div>
 					<Typography className="time" variant="caption">
-						{formatDateTime(call.created_at)}
+						{formatDateTime(props.created_at)}
 					</Typography>
 				</Summary>
 			</AccordionSummary>
@@ -36,10 +42,10 @@ const CallCard = (call: Call) => {
 				<Details>
 					<Typography
 						variant="body2"
-						color={call.call_type === "missed" ? "error" : ""}
+						color={props.call_type === "missed" ? "error" : ""}
 						className="duration"
 					>
-						{formatDuration(call)}
+						{formatDuration(props)}
 					</Typography>
 					<div className="buttons">
 						<IconButton size="small" color="success">
@@ -54,14 +60,16 @@ const CallCard = (call: Call) => {
 						<IconButton
 							color="default"
 							size="small"
-							onClick={() =>
-								archiveCall({
-									is_archived: true,
-									id: call.id,
-								})
-							}
+							onClick={() => {
+								if (props.type === "Archived") archiveCall(props.id);
+								else unArchiveCall(props.id);
+							}}
 						>
-							<ArchiveIcon />
+							{props.type === "Unarchived" ? (
+								<ArchiveIcon />
+							) : (
+								<UnarchiveIcon />
+							)}
 						</IconButton>
 					</div>
 				</Details>

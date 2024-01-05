@@ -14,7 +14,7 @@ function AllCalls() {
 							{date}
 						</Typography>
 						{calls.map((call) => (
-							<Call {...call} />
+							<Call {...call} type="Unarchived" />
 						))}
 					</div>
 				);
