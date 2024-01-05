@@ -1,27 +1,20 @@
-# React + TypeScript + Vite
+# Aircall
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Tech Stack used:
+1. React
+2. TypeScript
+3. Vite
+4. Redux Toolkit + RTK Query
+5. MUI
 
-Currently, two official plugins are available:
+### Noteworthy feature implementations
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Implemented dark and light theme functionality
+2. Used RTK Query library that can handle caching and invalidation for the data that is fetched.
+3. Used Typescript as improves type safety and developer productivity
+4. Used Vite as the build tool for efficiency
 
-## Expanding the ESLint configuration
+### Links
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Deployed in Vercel: [Link](https://aircall-umber-omega.vercel.app/)
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

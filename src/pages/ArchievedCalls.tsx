@@ -59,6 +59,8 @@ const Wrapper = styled(Box)`
 	display: flex;
 	flex-direction: column;
 	gap: 1.5rem;
+	max-width: 40rem;
+	margin: 0 auto;
 
 	.call-group {
 		display: flex;
