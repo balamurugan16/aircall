@@ -27,7 +27,7 @@ function NavBar() {
 				/>
 				<BottomNavigationAction
 					component={Link}
-					to="/archieve"
+					to="/archive"
 					label="Archive"
 					icon={<ArchiveIcon />}
 				/>

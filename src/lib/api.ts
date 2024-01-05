@@ -21,7 +21,7 @@ export const api = createApi({
 				url: `activities/${id}`,
 				method: "PATCH",
 				body: {
-					is_archived: false,
+					is_archived: true,
 				} as ArchiveRequest,
 			}),
 			invalidatesTags: ["Activity"],

@@ -28,7 +28,7 @@ function App() {
 				<Wrapper>
 					<Routes>
 						<Route path="/" element={<AllCalls />} />
-						<Route path="/archieve" element={<ArchievedCalls />} />
+						<Route path="/archive" element={<ArchievedCalls />} />
 					</Routes>
 				</Wrapper>
 				<NavBar />

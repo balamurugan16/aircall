@@ -61,7 +61,7 @@ const CallCard = (props: Props) => {
 							color="default"
 							size="small"
 							onClick={() => {
-								if (props.type === "Archived") archiveCall(props.id);
+								if (props.type === "Unarchived") archiveCall(props.id);
 								else unArchiveCall(props.id);
 							}}
 						>
