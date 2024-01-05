@@ -1,8 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { ArchiveRequest, Call } from "./types";
 
-const BASE_URL = import.meta.env["BASE_URL"];
-console.log(BASE_URL);
+const BASE_URL = import.meta.env.VITE_API_URL;
 
 export const api = createApi({
 	baseQuery: fetchBaseQuery({
@@ -27,7 +26,7 @@ export const api = createApi({
 		}),
 		archieveAllCalls: builder.mutation<string, void>({
 			query: () => ({
-				url: `activities/reset`,
+				url: `reset`,
 				method: "PATCH",
 			}),
 			invalidatesTags: ["Activity"],
@@ -35,4 +34,9 @@ export const api = createApi({
 	}),
 });
 
-export const { useGetActivitiesQuery, useGetActivityQuery } = api;
+export const {
+	useGetActivitiesQuery,
+	useGetActivityQuery,
+	useArchieveCallMutation,
+	useArchieveAllCallsMutation,
+} = api;
